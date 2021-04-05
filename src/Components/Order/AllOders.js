@@ -7,7 +7,6 @@ const AllOders = ({productDetails}) => {
                 <img src={image} className=" card-img-top" alt="..."></img>
                     <div className="card-body">
                         <h5 className="card-title">{name}</h5>
-                        <p className="card-text">Author Name: {authorName}</p>
                         <p className="card-text">Price: {price}</p>
                         <h6>BUYER: {LogedInUserName}</h6>
                         <h6>BUYER EMAIL: {logedInUserEmail}</h6>

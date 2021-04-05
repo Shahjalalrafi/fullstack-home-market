@@ -4,15 +4,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import Home from './Components/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
-import Admin from './Components/Admin/Admin';
+// import Admin from './Components/NewAdmin/Admin';
 import CheckOut from './Components/CheckOut/CheckOut';
 import Order from './Components/Order/Order';
 import Login from './Components/Login/Login';
 import { createContext, useState } from 'react';
 import PrivateRoute from './Components/Private/PrivateRoute';
-import AdminSideBar from './Components/Admin/AdminSideBar';
-import AddBook from './Components/Admin/AddBook';
-import Manager from './Components/Admin/Manager';
+// import AdminSideBar from './Components/NewAdmin/AdminSideBar';
+// import AddBook from './Components/NewAdmin/AddBook';
+// import Manager from './Components/NewAdmin/Manager';
+import MainAdmin from './Components/Admin/SidebarWithManager';
+import Sidebar from './Components/Admin/Sidebar';
+import SidebarWithAddBooking from './Components/Admin/SidebarWithAddBooking';
+import SidebarWithManager from './Components/Admin/SidebarWithManager';
 
 export const  userContext = createContext()
 
@@ -35,7 +39,7 @@ function App() {
             <Home />
           </Route>
 
-          <PrivateRoute path='/admin'>
+          {/* <PrivateRoute path='/admin'>
             <Admin />
           </PrivateRoute>
 
@@ -45,11 +49,21 @@ function App() {
 
           <PrivateRoute path='/admin/manager'>
             <Manager />
+          </PrivateRoute> */}
+
+
+          <PrivateRoute path='/admin/manager'>
+            <SidebarWithManager />
           </PrivateRoute>
 
-          {/* <PrivateRoute path='/admin/addBook'>
-            <Admin />
-          </PrivateRoute> */}
+          <PrivateRoute path='/admin/addBook'>
+            <SidebarWithAddBooking />
+          </PrivateRoute>
+
+          <PrivateRoute path='/admin'>
+            <Sidebar />
+          </PrivateRoute>
+
 
           <PrivateRoute path='/checkout/:id'>
             <CheckOut />

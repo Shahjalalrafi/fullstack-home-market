@@ -6,7 +6,6 @@ import {
     MuiPickersUtilsProvider,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
-import { Link } from 'react-router-dom';
 import { userContext } from '../../App';
 
 const CheckOut = () => {
@@ -29,9 +28,9 @@ const CheckOut = () => {
             })
     }, [])
 
-    const { name, authorName, image, price} = product
+    const { name, colour, image, price} = product
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [selectedDate, setSelectedDate] = React.useState(new Date().toDateString('dd/mm/yyyy'));
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -41,7 +40,7 @@ const CheckOut = () => {
         e.preventDefault()
         const ordersInfo = {
             name: name,
-            authorName: authorName,
+            colour: colour,
             image: image,
             price: price,
             time: selectedDate,
@@ -63,13 +62,14 @@ const CheckOut = () => {
 
     return (
         <div className='row'>
-
+            <h1 className='text-center text-success'>checkOut This product</h1>
+            <div className='col-md-8 m-auto'>
             <form>
                 <label>Name</label>
                 <input className='form-control col-5' type="text" value={product.name} />
 
-                <label>AuthorName</label>
-                <input className='form-control col-5' type="text" value={product.authorName} />
+                <label>Colour</label>
+                <input className='form-control col-5' type="text" value={product.colour} />
 
                 <label>price</label>
                 <input className='form-control col-5' type="text" value={product.price} />
@@ -81,6 +81,7 @@ const CheckOut = () => {
                 <input className='form-control col-5' type="text" value={logedInUser.email} />
 
 
+                <div className='col-md-4'>
                 <MuiPickersUtilsProvider  utils={DateFnsUtils}>
                     <Grid container justify="space-around">
                         <KeyboardDatePicker
@@ -97,10 +98,12 @@ const CheckOut = () => {
 
                     </Grid>
                 </MuiPickersUtilsProvider>
+                </div>
                 {/* <Link to='/order'>checkOut</Link> */}
 
                 <button className="btn btn-success" onClick={handleSubmit}>checkOut</button>
             </form>
+            </div>
 
         </div>
     );

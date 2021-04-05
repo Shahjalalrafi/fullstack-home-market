@@ -3,7 +3,7 @@ import { Link,  useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 
-const AddBook = () => {
+const AddBooking = () => {
 
     const { register, handleSubmit, watch, errors } = useForm();
     const [image, setImage] = useState(null)
@@ -12,7 +12,7 @@ const AddBook = () => {
     const onSubmit = data => {
         const eventData = {
             name: data.name,
-            authorName: data.authorName,
+            colour: data.authorName,
             price: data.price,
             image: image
         }
@@ -48,7 +48,7 @@ const AddBook = () => {
         <div>
             <form className='row m-auto form' onSubmit={handleSubmit(onSubmit)}>
                 <input className='form-control col-5 m-4' name="name" placeholder="Name" ref={register} /> <br />
-                <input className='form-control col-5 m-4' name="authorName" placeholder="authorName" ref={register} /> <br />
+                <input className='form-control col-5 m-4' name="authorName" placeholder="Colour" ref={register} /> <br />
                 <input className='form-control col-5 m-4' name="price" placeholder="Price" ref={register} /> <br />
                 <input className='form-control col-5 m-4' name="image" type='file' onChange={handleFile} /> <br />
 
@@ -58,4 +58,4 @@ const AddBook = () => {
     );
 };
 
-export default AddBook;
+export default AddBooking;

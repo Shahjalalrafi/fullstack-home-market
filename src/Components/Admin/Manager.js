@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import ManagerDetails from './ManagerDetails';
 import loading from '../../Images/spinner.gif'
+import ManagerDetails from './ManagerDetails';
 
 const Manager = () => {
 
     const [product, setProduct] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5050/events`)
+        fetch(`https://mighty-shore-21196.herokuapp.com/events`)
     .then(res => res.json())
     .then(data => setProduct(data))
     },[])

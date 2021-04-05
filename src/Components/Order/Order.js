@@ -17,6 +17,7 @@ const Order = () => {
     return (
         <div style={{ width: '80%', margin: '0 auto' }} >
             <div className="row">
+                <h1 className='text-center text-success'>Your orders</h1>
                 {
                     bookings.length > 0 ? bookings.map(singleBooking => <AllOders key={singleBooking._id} productDetails={singleBooking} />) : <div className='text-center'><img src={loading} alt=''></img></div>
                 }

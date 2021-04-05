@@ -1,14 +1,13 @@
-
-
+import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { useStyles } from '@material-ui/pickers/views/Calendar/SlideTransition';
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { Redirect } from 'react-router';
 
-const ManagerDetails = ({ details }) => {
+const MaangeDetails = ({details}) => {
 
-    const { name, authorName, price, _id } = details
+    const { name, colour, price, _id } = details
     console.log({ price })
 
 
@@ -19,7 +18,7 @@ const ManagerDetails = ({ details }) => {
             method: 'DELETE'
         })
             .then(res => res.json())
-            .then(result => console.log('delete succesfully', result))
+            .then(result => alert(`delete succesfully..you can't find it in your home page`))
             .catch(err => console.log(err))
     }
 
@@ -30,7 +29,7 @@ const ManagerDetails = ({ details }) => {
                     <TableHead>
                         <TableRow>
                             <TableCell><h6>Book Name</h6></TableCell>
-                            <TableCell align="right"><h6>Author Name</h6></TableCell>
+                            <TableCell align="right"><h6>Colour</h6></TableCell>
                             <TableCell align="right"><h6>Price</h6></TableCell>
                             <TableCell align="right"><h6>Action</h6></TableCell>
                         </TableRow>
@@ -41,7 +40,7 @@ const ManagerDetails = ({ details }) => {
                             <TableCell component="th" scope="row">
                                 {name}
                             </TableCell>
-                            <TableCell align="right">{authorName}</TableCell>
+                            <TableCell align="right">{colour}</TableCell>
                             <TableCell align="right">{price}</TableCell>
                             <TableCell align="right"><FontAwesomeIcon onClick={handleDelete} style={{ color: 'red', cursor: 'pointer' }} icon={faTrashAlt} /></TableCell>
                         </TableRow>
@@ -53,4 +52,4 @@ const ManagerDetails = ({ details }) => {
     );
 };
 
-export default ManagerDetails;
+export default MaangeDetails;
